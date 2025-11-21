@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Danish Kassar — Portfolio</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#222;background:#f7f7f7}
+    header{background:#fff;padding:14px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.06);position:sticky;top:0;z-index:20}
+    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    .hero{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center}
+    .hero h1{font-size:32px;margin:0;color:#1f2937}
+    .card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
+    img.round{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid #4f46e5}
+    .skills ul{margin:0;padding-left:18px}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .cert img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+    footer{text-align:center;padding:28px;color:#6b7280;font-size:14px}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;}.wrap{padding:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/profile1.jpg" alt="Danish" class="round" />
+        <div>
+          <div style="font-weight:700">Danish Kassar</div>
+          <div style="font-size:13px;color:#6b7280">Data Analyst • Power BI • SQL • Python</div>
+        </div>
+      </div>
+      <nav style="font-weight:600">
+        <a href="#about" style="margin-right:12px;color:#374151;text-decoration:none">About</a>
+        <a href="#skills" style="margin-right:12px;color:#374151;text-decoration:none">Skills</a>
+        <a href="#certs" style="color:#374151;text-decoration:none">Certificates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Hi, I'm <span style="color:#4f46e5">Danish</span></h1>
+        <p style="color:#374151;line-height:1.6">To build a career in a progressive organization where I can utilize my skills in data analysis, business intelligence, and automation to contribute to organizational growth while enhancing my knowledge and expertise.</p>
+        <div style="margin-top:12px;color:#374151;font-size:14px">
+          <div><strong>Email:</strong> dk1179117@gmail.com</div>
+          <div><strong>Phone:</strong> +91 78189 85615</div>
+          <div><strong>Location:</strong> Shamli, Banat, Hakikat Nagar 7</div>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <img src="assets/profile1.jpg" alt="Danish large" style="width:260px;height:320px;object-fit:cover;border-radius:12px" />
+        <div style="display:flex;gap:8px">
+          <img src="assets/profile2.jpg" style="width:64px;height:64px;border-radius:8px;object-fit:cover" />
+          <img src="assets/profile3.jpg" style="width:64px;height:64px;border-radius:8px;object-fit:cover" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:28px">
+      <h2 style="margin-bottom:10px">About</h2>
+      <div class="card">
+        <p style="margin:0 0 12px 0;color:#374151">Highly motivated fresher with certifications in Data Analytics, Ethical Hacking and ADIT (Advanced Diploma in IT). I focus on dashboarding, data automation and practical problem solving.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <strong>Education</strong>
+            <ul style="margin-top:8px;color:#374151">
+              <li>Intermediate (12th, Science) — SD Inter College — 63.2%</li>
+              <li>High School (10th) — Vaidic Inter College — 75%</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Hobbies</strong>
+            <ul style="margin-top:8px;color:#374151">
+              <li>Reading</li>
+              <li>Sports</li>
+              <li>Travelling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" style="margin-top:28px">
+      <h2 style="margin-bottom:10px">Skills</h2>
+      <div class="card skills">
+        <ul>
+          <li>Power BI (Dashboarding & Data Visualization)</li>
+          <li>Advanced Excel (Data Analysis & Reporting)</li>
+          <li>SQL (Data Extraction & Querying)</li>
+          <li>Python (Automation & Data Handling)</li>
+          <li>Statistics (Data Analysis & Insights)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="certs" style="margin-top:28px">
+      <h2 style="margin-bottom:10px">Certificates & Diplomas</h2>
+      <div class="cert-grid">
+        <div class="card cert"><img src="assets/certificate_data_analytics.png" alt="Data Analytics" /><div style="margin-top:8px;font-weight:600">Data Analytics — Ducat</div></div>
+        <div class="card cert"><img src="assets/certificate_ethical_hacking.jpg" alt="Ethical Hacking" /><div style="margin-top:8px;font-weight:600">Ethical Hacking — ICS</div></div>
+        <div class="card cert"><img src="assets/certificate_adit_diploma.jpg" alt="ADIT" /><div style="margin-top:8px;font-weight:600">ADIT — Diploma</div></div>
+        <div class="card cert"><img src="assets/certificate_it_studies1.jpg" alt="IT Studies 1" /><div style="margin-top:8px;font-weight:600">IT Computer Studies</div></div>
+        <div class="card cert"><img src="assets/certificate_it_studies2.jpg" alt="IT Studies 2" /><div style="margin-top:8px;font-weight:600">Certificate</div></div>
+        <div class="card cert"><img src="assets/certificate_personality_program.jpg" alt="Personality Program" /><div style="margin-top:8px;font-weight:600">Personality Development</div></div>
+        <div class="card cert"><img src="assets/certificate_marksheet.jpg" alt="Marksheet" /><div style="margin-top:8px;font-weight:600">Marksheet / Marksheet Details</div></div>
+      </div>
+    </section>
+
+    <section style="margin-top:28px">
+      <h2 style="margin-bottom:10px">Contact</h2>
+      <div class="card">
+        <div><strong>Email:</strong> dk1179117@gmail.com</div>
+        <div style="margin-top:6px"><strong>Phone:</strong> +91 78189 85615</div>
+        <div style="margin-top:6px"><strong>Address:</strong> Shamli, Banat, Hakikat Nagar 7</div>
+        <div style="margin-top:12px"><a href="mailto:dk1179117@gmail.com" style="display:inline-block;padding:8px 12px;background:#4f46e5;color:#fff;border-radius:8px;text-decoration:none">Send Message</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Built with ❤️ — Danish Portfolio • Ready for Vercel</div>
+  </footer>
+</body>
+</html>
