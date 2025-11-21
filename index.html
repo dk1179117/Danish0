@@ -1,127 +1,619 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Danish Kassar — Portfolio</title>
-  <style>
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#222;background:#f7f7f7}
-    header{background:#fff;padding:14px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.06);position:sticky;top:0;z-index:20}
-    .wrap{max-width:1000px;margin:0 auto;padding:24px}
-    .hero{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center}
-    .hero h1{font-size:32px;margin:0;color:#1f2937}
-    .card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
-    img.round{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid #4f46e5}
-    .skills ul{margin:0;padding-left:18px}
-    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .cert img{width:100%;height:150px;object-fit:cover;border-radius:8px}
-    footer{text-align:center;padding:28px;color:#6b7280;font-size:14px}
-    @media(max-width:800px){.hero{grid-template-columns:1fr;}.wrap{padding:16px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danish Kassar - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #1a252f;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            flex-direction: column;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 30px;
+        }
+
+        .hero img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: #ddd; 
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        /* Container for Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #3498db;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Content */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .about-badge {
+            background: #ecf0f1;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Education Table */
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        table th, table td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid #3498db;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .skill-desc {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Certificates Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.02);
+        }
+
+        .cert-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+        }
+
+        .cert-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            transition: opacity 0.3s;
+        }
+
+        /* Fallback styling when image fails */
+        .img-error {
+            color: #e74c3c;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cert-info {
+            text-align: center;
+        }
+
+        .cert-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .cert-sub {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-left {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-right {
+            padding: 40px;
+            flex: 1.5;
+            min-width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 2px;
+        }
+
+        .contact-text p, .contact-text a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+                clip-path: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .table-container {
+                margin: 0 -10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="assets/profile1.jpg" alt="Danish" class="round" />
-        <div>
-          <div style="font-weight:700">Danish Kassar</div>
-          <div style="font-size:13px;color:#6b7280">Data Analyst • Power BI • SQL • Python</div>
-        </div>
-      </div>
-      <nav style="font-weight:600">
-        <a href="#about" style="margin-right:12px;color:#374151;text-decoration:none">About</a>
-        <a href="#skills" style="margin-right:12px;color:#374151;text-decoration:none">Skills</a>
-        <a href="#certs" style="color:#374151;text-decoration:none">Certificates</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="wrap">
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">DANISH.</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero">
-      <div>
-        <h1>Hi, I'm <span style="color:#4f46e5">Danish</span></h1>
-        <p style="color:#374151;line-height:1.6">To build a career in a progressive organization where I can utilize my skills in data analysis, business intelligence, and automation to contribute to organizational growth while enhancing my knowledge and expertise.</p>
-        <div style="margin-top:12px;color:#374151;font-size:14px">
-          <div><strong>Email:</strong> dk1179117@gmail.com</div>
-          <div><strong>Phone:</strong> +91 78189 85615</div>
-          <div><strong>Location:</strong> Shamli, Banat, Hakikat Nagar 7</div>
-        </div>
-      </div>
-
-      <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px">
-        <img src="assets/profile1.jpg" alt="Danish large" style="width:260px;height:320px;object-fit:cover;border-radius:12px" />
-        <div style="display:flex;gap:8px">
-          <img src="assets/profile2.jpg" style="width:64px;height:64px;border-radius:8px;object-fit:cover" />
-          <img src="assets/profile3.jpg" style="width:64px;height:64px;border-radius:8px;object-fit:cover" />
-        </div>
-      </div>
+        <!-- Profile Pic: Using previous image as requested -->
+        <img src="https://danish0.vercel.app/certificate_it_studies2.jpg" alt="Danish Kassar" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'width:180px;height:180px;background:#ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#555;\'>Profile Image</div>')">
+        <h1>Hi, I'm Danish Kassar</h1>
+        <p>Data Analyst | Web Developer | Digital Marketer</p>
+        <a href="#contact" class="btn">Get In Touch</a>
     </section>
 
-    <section id="about" style="margin-top:28px">
-      <h2 style="margin-bottom:10px">About</h2>
-      <div class="card">
-        <p style="margin:0 0 12px 0;color:#374151">Highly motivated fresher with certifications in Data Analytics, Ethical Hacking and ADIT (Advanced Diploma in IT). I focus on dashboarding, data automation and practical problem solving.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div>
-            <strong>Education</strong>
-            <ul style="margin-top:8px;color:#374151">
-              <li>Intermediate (12th, Science) — SD Inter College — 63.2%</li>
-              <li>High School (10th) — Vaidic Inter College — 75%</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Hobbies</strong>
-            <ul style="margin-top:8px;color:#374151">
-              <li>Reading</li>
-              <li>Sports</li>
-              <li>Travelling</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
 
-    <section id="skills" style="margin-top:28px">
-      <h2 style="margin-bottom:10px">Skills</h2>
-      <div class="card skills">
-        <ul>
-          <li>Power BI (Dashboarding & Data Visualization)</li>
-          <li>Advanced Excel (Data Analysis & Reporting)</li>
-          <li>SQL (Data Extraction & Querying)</li>
-          <li>Python (Automation & Data Handling)</li>
-          <li>Statistics (Data Analysis & Insights)</li>
-        </ul>
-      </div>
-    </section>
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    I am a driven fresher looking to build a career in a progressive organization. 
+                    I specialize in transforming raw data into meaningful insights using 
+                    <strong>Data Analysis</strong> and <strong>Automation</strong> tools.
+                    I am also skilled in <strong>Web Development</strong> and <strong>Digital Marketing</strong> to drive business growth.
+                </p>
+                <div class="about-details">
+                    <div class="about-badge">📚 Reading</div>
+                    <div class="about-badge">🏏 Sports</div>
+                    <div class="about-badge">✈️ Travelling</div>
+                    <div class="about-badge">🗣️ Hindi & English</div>
+                </div>
+            </div>
+        </section>
 
-    <section id="certs" style="margin-top:28px">
-      <h2 style="margin-bottom:10px">Certificates & Diplomas</h2>
-      <div class="cert-grid">
-        <div class="card cert"><img src="1000293096.png" alt="Data Analytics" /><div style="margin-top:8px;font-weight:600">Data Analytics — Ducat</div></div>
-        <div class="card cert"><img src="assets/certificate_ethical_hacking.jpg" alt="Ethical Hacking" /><div style="margin-top:8px;font-weight:600">Ethical Hacking — ICS</div></div>
-        <div class="card cert"><img src="assets/certificate_adit_diploma.jpg" alt="ADIT" /><div style="margin-top:8px;font-weight:600">ADIT — Diploma</div></div>
-        <div class="card cert"><img src="assets/certificate_it_studies1.jpg" alt="IT Studies 1" /><div style="margin-top:8px;font-weight:600">IT Computer Studies</div></div>
-        <div class="card cert"><img src="assets/certificate_it_studies2.jpg" alt="IT Studies 2" /><div style="margin-top:8px;font-weight:600">Certificate</div></div>
-        <div class="card cert"><img src="assets/certificate_personality_program.jpg" alt="Personality Program" /><div style="margin-top:8px;font-weight:600">Personality Development</div></div>
-        <div class="card cert"><img src="assets/certificate_marksheet.jpg" alt="Marksheet" /><div style="margin-top:8px;font-weight:600">Marksheet / Marksheet Details</div></div>
-      </div>
-    </section>
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution / Board</th>
+                            <th>Year</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Intermediate (12th, Science)</td>
+                            <td>S D Inter College, Titavi (U.P. Board)</td>
+                            <td>2023</td>
+                            <td><strong>63.2%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>High School (10th)</td>
+                            <td>Vaidic Inter College, Sisauli (U.P. Board)</td>
+                            <td>2021</td>
+                            <td><strong>75%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <section style="margin-top:28px">
-      <h2 style="margin-bottom:10px">Contact</h2>
-      <div class="card">
-        <div><strong>Email:</strong> dk1179117@gmail.com</div>
-        <div style="margin-top:6px"><strong>Phone:</strong> +91 78189 85615</div>
-        <div style="margin-top:6px"><strong>Address:</strong> Shamli, Banat, Hakikat Nagar 7</div>
-        <div style="margin-top:12px"><a href="mailto:dk1179117@gmail.com" style="display:inline-block;padding:8px 12px;background:#4f46e5;color:#fff;border-radius:8px;text-decoration:none">Send Message</a></div>
-      </div>
-    </section>
-  </main>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-name">Web Development</div>
+                    <div class="skill-desc">HTML, CSS, Responsive Design</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-name">Digital Marketing</div>
+                    <div class="skill-desc">SEO, Content Strategy, Branding</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-name">Power BI</div>
+                    <div class="skill-desc">Dashboarding & Data Visualization</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-name">Advanced Excel</div>
+                    <div class="skill-desc">Data Analysis & Reporting</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-name">SQL</div>
+                    <div class="skill-desc">Data Extraction & Querying</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-desc">Automation & Data Handling</div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <div class="wrap">Built with ❤️ — Danish Portfolio • Ready for Vercel</div>
-  </footer>
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <h2 class="section-title">Certifications & Awards</h2>
+            <div class="gallery">
+                
+                <!-- Marksheet (UPDATED: Using profile2.jpg) -->
+                <div class="cert-card">
+                    <div class="cert-image-container">
+                        <img src="https://danish0.vercel.app/profile2.jpg" alt="Academic Marksheet" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-error\'>Image Not Found</div>'">
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Academic Marksheet</div>
+                        <div class="cert-sub">Advanced Diploma in IT (ADIT)</div>
+                    </div>
+                </div>
+
+                <!-- Certificate 1 -->
+                <div class="cert-card">
+                    <div class="cert-image-container">
+                        <img src="https://danish0.vercel.app/certificate_data_analytics.jpg" alt="Data Analytics Cert" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-error\'>Image Not Found</div>'">
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Data Analytics Professional</div>
+                        <div class="cert-sub">Ducat • 2024-2025</div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-card">
+                    <div class="cert-image-container">
+                        <img src="https://danish0.vercel.app/certificate_ethical_hacking.jpg" alt="Ethical Hacking Cert" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-error\'>Image Not Found</div>'">
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">Ethical Hacking (EH)</div>
+                        <div class="cert-sub">IT Computer Studies • Grade A+</div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-card">
+                    <div class="cert-image-container">
+                        <img src="https://danish0.vercel.app/certificate_adit_diploma.jpg" alt="ADIT Diploma" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-error\'>Image Not Found</div>'">
+                    </div>
+                    <div class="cert-info">
+                        <div class="cert-title">ADIT Diploma</div>
+                        <div class="cert-sub">15 Months Course • Grade A+</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-left">
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>Shamli, Banat, Hakikat Nagar 7</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:dk1179117@gmail.com">dk1179117@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+917818985615">+91 78189 85615</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <h3>Ready to work together?</h3>
+                    <p style="margin-top: 10px; color: #555;">Feel free to reach out for opportunities.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Danish Kassar. Built with HTML & CSS.</p>
+    </footer>
+
 </body>
 </html>
