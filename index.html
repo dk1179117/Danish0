@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danish Kassar - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* Basic Reset & Styles */
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --bg-light: #f0f2f5;
+            --text-dark: #333;
+            --card-bg: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +29,10 @@
         }
 
         body {
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Header & Navigation */
@@ -29,7 +43,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -39,22 +54,25 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #3498db;
+            font-weight: 700;
+            color: var(--primary);
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
+        /* Standard Nav Links (Hidden on mobile mostly, but visible on Desktop if needed) */
         .nav-links {
             list-style: none;
+            display: flex;
         }
 
         .nav-links li {
-            display: inline;
-            margin-left: 20px;
+            margin-left: 25px;
         }
 
         .nav-links a {
@@ -63,24 +81,93 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #3498db;
+            color: var(--primary);
         }
 
-        /* Hero Section */
+        /* 3-Dot Menu Button Styling */
+        .menu-btn {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: none; /* Hidden by default on large screens if using standard nav */
+        }
+
+        .menu-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 200px;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--primary);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section with 3D Touch */
         .hero {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px 120px;
             text-align: center;
             flex-direction: column;
+            position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
         .hero img {
@@ -89,25 +176,475 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top;
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            background-color: #ddd; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            background-color: #ddd;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 5px;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
 
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .social-icon.instagram:hover { background: #d62976; border-color: #d62976; }
+        .social-icon.facebook:hover { background: #3b5998; border-color: #3b5998; }
+        .social-icon.telegram:hover { background: #0088cc; border-color: #0088cc; }
+
         .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin: 60px 0 50px;
+            color: var(--secondary);
+            font-size: 2.5rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            border-bottom: 5px solid var(--primary);
+        }
+        
+        .about-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .about-badge {
+            background: #ecf0f1;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #555;
+            transition: transform 0.3s;
+        }
+
+        .about-badge:hover {
+            transform: scale(1.05);
+            background: #e0e0e0;
+        }
+
+        /* Education Table */
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        table th, table td {
+            padding: 20px 30px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        table tr:hover {
+            background-color: #fafafa;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.4s;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Certificates Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+        }
+
+        .cert-image-container {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+        }
+
+        .cert-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        .cert-info {
+            text-align: center;
+        }
+
+        .cert-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .cert-sub {
+            font-size: 0.95rem;
+            color: #777;
+            background: #f8f9fa;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-left {
+            background: var(--secondary);
+            color: white;
+            padding: 50px;
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-right {
+            padding: 50px;
+            flex: 1.5;
+            min-width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .contact-text p, .contact-text a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #151e26;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            font-size: 0.9rem;
+            border-top: 5px solid var(--primary);
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide standard nav on mobile */
+            }
+            
+            .menu-btn {
+                display: block; /* Show 3-dot button on mobile */
+            }
+
+            .hero {
+                padding: 60px 20px;
+                clip-path: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .table-container {
+                margin: 0 -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">DANISH.</div>
+            
+            <!-- Standard Nav Links (Visible on Desktop) -->
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- 3-Dot Menu Icon (Visible on Mobile) -->
+            <div class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+
+            <!-- Dropdown Menu for Mobile -->
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="#about" onclick="toggleMenu()"><i class="fas fa-user"></i> About Me</a>
+                <a href="#education" onclick="toggleMenu()"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="#skills" onclick="toggleMenu()"><i class="fas fa-laptop-code"></i> Skills</a>
+                <a href="#certificates" onclick="toggleMenu()"><i class="fas fa-award"></i> Certificates</a>
+                <a href="#contact" onclick="toggleMenu()"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://danish0.vercel.app/certificate_it_studies2.jpg" alt="Danish Kassar" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'width:180px;height:180px;background:#ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#555;margin-bottom:20px;\'>Profile Image</div>')">
+        
+        <h1>Hi, I'm Danish Kassar</h1>
+        <p>Data Analyst | Web Developer | Digital Marketer</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/danish_kassar0" target="_blank" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1BjWxku4gE/" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/teamharamiii" target="_blank" class="social-icon telegram" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+
+        <a href="#contact" class="btn">Get In Touch</a>
+    </section>
+
+    <div class="container">
+
+        <!-- About Section (Refined Content) -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    I am a versatile tech professional with a diverse background in <strong>Data Analytics</strong>, <strong>Web Development</strong>, and <strong>Digital Marketing</strong>. 
+                    Having completed a rigorous Data Analytics program at Ducat and an Advanced Diploma in IT (ADIT) with an <strong>A+ Grade</strong>, I possess strong analytical and technical skills. 
+                    I also hold a specialized certification in <strong>Ethical Hacking</strong>. My goal is to bridge the gap between raw data and strategic decision-making while building robust digital solutions.
+                </p>
+                <div class="about-details">
+                    <div class="about-badge">📚 Reading</div>
+                    <div class="about-badge">🏏 Sports</div>
+                    <div class="about-badge">✈️ Travelling</div>
+                    <div class="about-badge">🗣️ Hindi & English</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section (Refined Content) -->
+        <section id="education">
+            <h2 class="section-title">Education Timeline</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Qualification</th>
+                            <th>Institution / Board</th>
+                            <th>Year</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Intermediate (12th Science)</strong></td>
+                            <td>S D Inter College, Titavi (U.P. Board)</td>
+                            <td>2023</td>
+                            <td><span style="color: var(--primary); font-weight: bold;">63.2%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>High School (10th)</strong></td>
+                            <td>Vaidic Inter College, Sisauli (U.P. Board)</td>
+                            <td>2021</td>
+                            <td><span style="color: var(--primary); font-weight: bold;">75%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ADIT Diploma</strong></td>
+                            <td>IT Computer Studies (ICS)</td>
+                            <td>2022-23</td>
+                            <td><span style="color: var(--primary); font-weight: bold;">Grade A+</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                      .btn {
             display: inline-block;
             background-color: #e74c3c;
             color: white;
